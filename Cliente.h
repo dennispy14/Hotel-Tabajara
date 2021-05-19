@@ -7,6 +7,8 @@ public:
     string getNome();
     void   setNome(string nome);
     string    getCpf();
+    int getReservas();
+    void setReservas();
     void   setCpf(string cpf);
     Cliente(string nome, string cpf);
     Cliente();    
@@ -14,5 +16,6 @@ public:
 private:
     string nome;
     string cpf;
+    int reservas;
 };
 

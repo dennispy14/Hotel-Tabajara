@@ -11,6 +11,7 @@ private:
 	vector<Cliente> clientes;
 	vector<Quarto> quarto;
 public:
+	Funcionario(string nome);
 	string getNome();
 	void setNome(string nome);
 	void verificaVagas(int num);
@@ -21,5 +22,8 @@ public:
 	void criaQuarto(int numero, bool luxo, int numCamas, int camaCasal);
 	void imprimeListaQuartos();
 	bool verificaCliente(string cpf);
+	void ImprimeReservasCliente();
+	int  verificaReservas(string cpf);
+	void relatorioGeral();
 };
 

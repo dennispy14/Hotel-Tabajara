@@ -10,11 +10,20 @@ private:
 	int numCamas;
 	int camaCasal;
 	string cpfCli;
+	string funcRes;
+	string dtaIni;
+	string dtaFim;
 public:
 	bool getLuxo();
 	int getNumero();
 	int getNumCamas();
-	string getCpfCli();	
+	string getFuncRes();
+	string getCpfCli();
+	string getDtaIni();
+	string getDtaFim();	
+	void setFuncRes(string funcRes);
+	void setDtaIni(string dtaIni);
+	void setDtaFim(string dtaFim);
 	void setCpfCli(string cpfCli);
 	int getCamaCasal();
 	void imprime();

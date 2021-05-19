@@ -2,6 +2,35 @@
 #include <string>
 #include<iostream>
 using namespace std;
+
+//Imprime os dados do Obejto
+void Quarto::imprime()
+{
+	string lux = (luxo == true) ? "Sim": "Nao";
+	cout << "Numero do Quarto: " << numero << " --  Luxo: " << lux << " -- Numero de camas: " << numCamas << " -- Camas de casal: " << camaCasal << " -- Cliente: " << cpfCli << " "<<  endl;
+}
+//Construtor da classe Quarto
+Quarto::Quarto(int numero, bool luxo, int numCamas, int camaCasal)
+{
+	this->numero = numero;
+	this->luxo = luxo;
+	this->numCamas = numCamas;
+	this->camaCasal = camaCasal;
+	this->cpfCli = "";
+	this->dtaIni = "";
+	this->dtaFim = "";
+	this->funcRes = "";
+
+}
+//Metodos de acesso dos atributos encapsulados
+string Quarto::getCpfCli()
+{
+	return cpfCli;
+}
+void Quarto::setCpfCli(string cpfCli)
+{
+	this->cpfCli = cpfCli;
+}
 bool Quarto::getLuxo()
 {
 	return luxo;
@@ -20,26 +49,27 @@ int Quarto::getCamaCasal()
 {
 	return camaCasal;
 }
-void Quarto::imprime()
+string Quarto::getDtaIni()
 {
-	string lux = (luxo == true) ? "Sim": "Nao";
-	cout << "Numero do Quarto: " << numero << " --  Luxo: " << lux << " -- Numero de camas: " << numCamas << " -- Camas de casal: " << camaCasal << " -- Cliente: " << cpfCli << " "<<  endl;
+	return dtaIni;
 }
-
-Quarto::Quarto(int numero, bool luxo, int numCamas, int camaCasal)
+string Quarto::getDtaFim()
 {
-	this->numero = numero;
-	this->luxo = luxo;
-	this->numCamas = numCamas;
-	this->camaCasal = camaCasal;
-	this->cpfCli = "";
-
+	return dtaFim;
 }
-string Quarto::getCpfCli()
+void Quarto::setDtaIni(string dtaIni)
 {
-	return cpfCli;
+	this->dtaIni = dtaIni;
 }
-void Quarto::setCpfCli(string cpfCli)
+void Quarto::setDtaFim(string dtaFim)
 {
-	this->cpfCli = cpfCli;
+	this->dtaFim = dtaFim;
+}
+void Quarto::setFuncRes(string funcRes)
+{
+	this->funcRes = funcRes;
+}
+string Quarto::getFuncRes()
+{
+	return funcRes;
 }

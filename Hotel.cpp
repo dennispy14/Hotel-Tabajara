@@ -6,9 +6,12 @@
 using namespace std;
 int main()
 {
-    Funcionario fun;
-    fun.adicionaCliente("Tamara", "1");
-    fun.adicionaCliente("Tadeu", "2");
+    string nomeFunc;
+    cout << "Digite seu nome: " << endl;    
+    getline(cin, nomeFunc);
+    Funcionario fun(nomeFunc);
+    fun.adicionaCliente("Tamara Rosa", "1234");
+    fun.adicionaCliente("Tadeu Verde", "4321");
     fun.criaQuarto(1, true,  3, 2);
     fun.criaQuarto(2, true,  5, 4);
     fun.criaQuarto(3, false, 2, 1);
@@ -22,12 +25,15 @@ int main()
     string nomeCli, cpfCli;
     while (op != 0)
     {
+        cout << "--Usuario Logado: " << fun.getNome() << "--" << endl;
         cout << "Selecione a Opcao Desejada:\n" <<
             "1 - Verificar quarto\n" <<
             "2 - Inserir ou Alterar Cliente\n" <<
             "3 - Realizar reserva\n" <<
             "4 - Listar quartos\n" << 
             "5 - Listar Clientes\n" <<
+            "6 - Reservas por Clientes\n" <<
+            "7 - Imprimir relatorio Geral\n" <<
             "0 - Sair" <<endl;
         cin >> op;
 
@@ -51,7 +57,8 @@ int main()
             else
             {
                 cout << "Digite o nome do cliente: " << endl;
-                cin >> nomeCli;
+                cin.ignore();
+                getline(cin, nomeCli);                
                 cout << "Digite o Cpf: " << endl;
                 cin >> cpfCli;
                 fun.adicionaCliente(nomeCli, cpfCli);
@@ -68,6 +75,12 @@ int main()
             break;
         case 5:
             fun.imprimeListaClientes();
+            break;
+        case 6:
+            fun.ImprimeReservasCliente();
+            break;
+        case 7:
+            fun.relatorioGeral();
             break;
         default:
             break;
