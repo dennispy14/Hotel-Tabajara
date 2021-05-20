@@ -25,6 +25,10 @@ public:
 	void setDtaIni(string dtaIni);
 	void setDtaFim(string dtaFim);
 	void setCpfCli(string cpfCli);
+	void setNumero(int numero);
+	void setNumCamas(int numCamas);
+	void setCamaCasal(int camaCalas);
+	void setLuxo(bool luxo);
 	int getCamaCasal();
 	void imprime();
 	Quarto(int numero, bool luxo, int numCamas, int camaCasal);

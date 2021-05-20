@@ -27,13 +27,14 @@ int main()
     {
         cout << "--Usuario Logado: " << fun.getNome() << "--" << endl;
         cout << "Selecione a Opcao Desejada:\n" <<
-            "1 - Verificar quarto\n" <<
-            "2 - Inserir ou Alterar Cliente\n" <<
-            "3 - Realizar reserva\n" <<
-            "4 - Listar quartos\n" << 
-            "5 - Listar Clientes\n" <<
-            "6 - Reservas por Clientes\n" <<
-            "7 - Imprimir relatorio Geral\n" <<
+            "1 - Verificar quarto\n"            <<
+            "2 - Inserir ou alterar Quarto\n"  <<
+            "3 - Inserir ou Alterar Cliente\n"  <<
+            "4 - Realizar reserva\n"            <<
+            "5 - Listar quartos\n"              << 
+            "6 - Listar Clientes\n"             <<
+            "7 - Reservas por Clientes\n"       <<
+            "8 - Imprimir relatorio Geral\n"    <<
             "0 - Sair" <<endl;
         cin >> op;
 
@@ -45,6 +46,31 @@ int main()
             fun.verificaVagas(num);
             break;
         case 2:
+            cout << "1 - Alterar \n2 - Incluir" << endl;
+            cin >> num2;
+            if (num2 == 1)
+            {
+                cout << "Digite o Numero do quarto: " << endl;
+                cin >> num;
+                fun.alteraQuarto(num);
+            }
+            else
+            {
+                int num, cam, camCsl, luxo;
+                bool lux;
+                cout << "Digite o numero do Quarto: " << endl;
+                cin >> num;
+                cout << "Luxo: 1 - Sim 2 - Nao " << endl;
+                cin >> luxo;
+                cout << "Camas: ";
+                cin >> cam;
+                cout << "Quantas de casal: ";
+                cin >> camCsl;  
+                lux = (luxo == 1) ? true : false;
+                fun.criaQuarto(num, lux, cam, camCsl);
+            }
+            break;
+        case 3:
             cout << "1 - Alterar \n2 - Incluir" << endl;
             cin >> num2;
             if (num2 == 1)
@@ -65,23 +91,23 @@ int main()
 
             }
             break;
-        case 3:
+        case 4:
             cout << "Digite o numero do quarto: " << endl;
             cin >> numQuarto;
             fun.reservaQuarto(numQuarto);
             break;
-        case 4:
+        case 5:
             fun.imprimeListaQuartos();
             break;
-        case 5:
+        case 6:
             fun.imprimeListaClientes();
             break;
-        case 6:
+        case 7:
             fun.ImprimeReservasCliente();
             break;
-        case 7:
+        case 8:
             fun.relatorioGeral();
-            break;
+            break;           
         default:
             break;
         }

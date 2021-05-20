@@ -16,12 +16,11 @@ void Funcionario::setNome(string nome)
 void Funcionario::adicionaCliente(string nome, string cpf)
 {
 	clientes.push_back(Cliente(nome, cpf));
-
+    cout << "Cliente incluido com sucesso!\n\n";
 }
 //Busca através do parametro o cliente para alteração
 void Funcionario::alteraCliente(string cpf)
-{
-    
+{    
     string  novNome,novCpf;
     for (int i = 0; i < clientes.size(); i++)
     {
@@ -35,10 +34,9 @@ void Funcionario::alteraCliente(string cpf)
             cout << "Digite novo cpf: " << endl;
             cin >> novCpf;            
             clientes[i].setCpf(novCpf);
-        }
-            
-    }
-   
+            cout << "Cliente alterado com sucesso!\n\n";
+        }            
+    }   
 }
 //Imprime a lista dos Clientes dentro do vetor através do metodo da classe cliente 
 void Funcionario::imprimeListaClientes()
@@ -61,13 +59,11 @@ bool Funcionario::verificaCliente(string cpf)
     }
     return flag;    
 }
-
 //Verifica se exite valor no campo cpfCli para validar se esta reservado 
 void Funcionario::verificaVagas( int num)
 {    
     for (int i = 0; i < quarto.size(); i++)
     {
-
         if (quarto[i].getNumero() == num && quarto[i].getCpfCli() != "")
         {
             cout << "Quarto Ocupado!" << endl;
@@ -87,7 +83,6 @@ void Funcionario::imprimeListaQuartos()
         quarto[i].imprime();
     }
 }
-
 void Funcionario::reservaQuarto(int num)
 {
     // Inicio cpfCLi com "" pois se essa variavel não for alterada o Quarto ja esta reservado, de acordo com a lógica condicional do proximo IF
@@ -105,9 +100,9 @@ void Funcionario::reservaQuarto(int num)
             else
             {
                 quarto[i].setCpfCli(cpfCli);
-                cout << "Digite a data Inicial da reserva: " << endl;
+                cout << "Digite a data Inicial da reserva: ex.99/99/9999 " << endl;
                 cin >> dtaIni;
-                cout << "Digite a data Final da reserva: " << endl;
+                cout << "Digite a data Final da reserva: ex.99/99/9999 " << endl;
                 cin >> dtaFim;
                 quarto[i].setDtaIni(dtaIni);
                 quarto[i].setDtaFim(dtaFim);
@@ -117,33 +112,28 @@ void Funcionario::reservaQuarto(int num)
                     if (clientes[i].getCpf() == cpfCli)
                     {
                         clientes[i].setReservas();
+                        cout << "Quarto reservado com sucesso!\n\n";
                     }
                 }
-
             }
         }  
     }
-
     if (cpfCli == "")
         cout << "Quarto ja esta reservado" << endl;
-
 }
 // Metodo para criar o objeto Quato. Utliza o vetor de quarto que está declarado em Funcionario
 void Funcionario::criaQuarto(int numero, bool luxo, int numCamas, int camaCasal)
 {
     //inclui ao vetor um odjeto de quarto a partir dos parametro. push_back inclui o objeto no final do vetor
     quarto.push_back(Quarto(numero, luxo, numCamas, camaCasal));
-
+    cout << "Quarto criado com sucesso!\n\n";
 }
-
 void Funcionario::ImprimeReservasCliente()
 {
     for (int i = 0; i < clientes.size(); i++)
     {
         cout << "Cliente: " << clientes[i].getNome() << " -- Possui " << clientes[i].getReservas() << " reservas."<< endl;
-
     }
-
 }
 int Funcionario::verificaReservas(string cpf)
 {
@@ -163,19 +153,55 @@ void Funcionario::relatorioGeral()
 {
     string lux;
     for (int i = 0; i < clientes.size(); i++)
-    {
-        cout << "------------------------------------------------------------------------" << endl;
+    {        
+        cout << "******************************************************************************" << endl;
         cout << "Cliente: " << clientes[i].getNome() << " -- Possui " << clientes[i].getReservas() << " reservas." << endl;
         
         for (int a = 0; a < quarto.size(); a++)
         {
             if (quarto[a].getCpfCli() == clientes[i].getCpf())
             {
-                cout << "****************************************************************" << endl;
+                cout << "----------------------------------------------------------------------------" << endl;
                 lux = (quarto[a].getLuxo() == true) ? "Sim" : "Nao";
                 cout << "Numero do Quarto: " << quarto[a].getNumero() << " --  Luxo: " << lux << " -- Numero de camas: " << quarto[a].getNumCamas() << " -- Camas de casal: " << quarto[a].getCamaCasal() << endl;
                 cout << "Funcionario que realizou a reserva: " << quarto[a].getFuncRes() << endl;
+                cout << " -->Periodo da reserva de " << quarto[a].getDtaIni() << " Ate " << quarto[a].getDtaFim() << endl;
             }                
+        }
+    }
+    cout << "\n";
+}
+void Funcionario::alteraQuarto(int numero)
+{
+    int num, cam, camCsl, luxo;
+    bool lux, flag= false;
+    for (int i = 0; i < quarto.size(); i++)
+    {
+        if (quarto[i].getNumero() == numero)
+        {            
+            cout << "Digite o novo numero do Quarto: " << endl;
+            cin >> num;
+            for (int a = 0; a < quarto.size(); a++)
+                if (quarto[a].getNumero() == num)
+                {
+                    cout << "Numero ja cadastrado em um quarto!\n\n" << endl;
+                    flag = true;
+                }
+            if (flag != true)
+            {
+                cout << "Luxo: 1 - Sim 2 - Nao " << endl;
+                cin >> luxo;
+                cout << "Camas: ";
+                cin >> cam;
+                cout << "Quantas de casal: ";
+                cin >> camCsl;
+                lux = (luxo == 1) ? true : false;
+                quarto[i].setNumero(num);
+                quarto[i].setLuxo(lux);
+                quarto[i].setNumCamas(cam);
+                quarto[i].setCamaCasal(camCsl);
+                cout << "Quarto Alterado!" << endl;
+            }
         }
     }
 }

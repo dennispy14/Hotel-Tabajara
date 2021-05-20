@@ -25,5 +25,6 @@ public:
 	void ImprimeReservasCliente();
 	int  verificaReservas(string cpf);
 	void relatorioGeral();
+	void alteraQuarto(int numero);
 };
 

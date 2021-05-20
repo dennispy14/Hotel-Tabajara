@@ -73,3 +73,19 @@ string Quarto::getFuncRes()
 {
 	return funcRes;
 }
+void Quarto::setNumero(int numero)
+{
+	this->numero = numero;
+}
+void Quarto::setNumCamas(int numCamas)
+{
+	this->numCamas = numCamas;
+}
+void Quarto::setCamaCasal(int camaCasal)
+{
+	this->camaCasal = camaCasal;
+}
+void Quarto::setLuxo(bool luxo)
+{
+	this->luxo = luxo;
+}
