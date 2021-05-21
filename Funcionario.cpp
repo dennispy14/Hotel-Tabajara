@@ -99,6 +99,7 @@ void Funcionario::reservaQuarto(int num)
                 cout << "Cliente nao encontrado!" << endl;
             else
             {
+                
                 quarto[i].setCpfCli(cpfCli);
                 cout << "Digite a data Inicial da reserva: ex.99/99/9999 " << endl;
                 cin >> dtaIni;
@@ -171,6 +172,7 @@ void Funcionario::relatorioGeral()
     }
     cout << "\n";
 }
+//altera o quarto a partir do seu numero
 void Funcionario::alteraQuarto(int numero)
 {
     int num, cam, camCsl, luxo;

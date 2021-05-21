@@ -7,9 +7,11 @@ using namespace std;
 int main()
 {
     string nomeFunc;
-    cout << "Digite seu nome: " << endl;    
+    cout << "Digite seu nome: " << endl;   
     getline(cin, nomeFunc);
     Funcionario fun(nomeFunc);
+
+    //Criação de Quartos e usuarios para testes
     fun.adicionaCliente("Tamara Rosa", "1234");
     fun.adicionaCliente("Tadeu Verde", "4321");
     fun.criaQuarto(1, true,  3, 2);
